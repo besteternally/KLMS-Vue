@@ -280,9 +280,10 @@ export default {
             <el-button
               size='large'
               type='text'
+              disabled={data.node_pid === 0}
               on-click={() => this.remove(node, data)}
             >
-              <i v-show='true' class='el-icon-delete' />
+              <i class='el-icon-delete' />
             </el-button>
           </span>
         </span>
