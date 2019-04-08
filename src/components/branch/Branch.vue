@@ -227,23 +227,24 @@ export default {
         )
         .then(
           res => {
-            const newChild = {
-              node_id: this.clickData.node_id + 10,
-              node_name: this.form.name,
-              node_desc: this.form.desc,
-              node_state: '使用中',
-              children: []
+            if (res.data === -1) {
+              this.$Message.success('名称已存在！')
+              this.dialogFormVisible = false
+            } else if (res !== -1) {
+              const newChild = {
+                node_id: res.data,
+                node_name: this.form.name,
+                node_desc: this.form.desc,
+                node_state: '使用中',
+                children: []
+              }
+              if (!this.clickData.children) {
+                this.$set(this.clickData, 'children', [])
+              }
+              this.clickData.children.push(newChild)
+              this.$Message.success('添加成功！')
+              this.dialogFormVisible = false
             }
-            if (!this.clickData.children) {
-              this.$set(this.clickData, 'children', [])
-            }
-            this.clickData.children.push(newChild)
-            this.$Message.success('添加成功！')
-            this.dialogFormVisible = false
-          },
-          res => {
-            this.$Message.success('添加失败！')
-            this.dialogFormVisible = false
           }
         )
     },
