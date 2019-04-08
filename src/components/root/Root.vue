@@ -93,13 +93,13 @@ export default {
           fixed: 'middle'
         },
         {
-          title: '状态',
-          key: 'node_state',
+          title: '描述',
+          key: 'node_desc',
           fixed: 'middle'
         },
         {
-          title: '描述',
-          key: 'node_desc',
+          title: '状态',
+          key: 'node_state',
           fixed: 'middle'
         },
         {
