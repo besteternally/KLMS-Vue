@@ -228,7 +228,7 @@ export default {
         .then(
           res => {
             const newChild = {
-              node_id: res.node_id,
+              node_id: this.clickData.node_id + 10,
               node_name: this.form.name,
               node_desc: this.form.desc,
               node_state: '使用中',
