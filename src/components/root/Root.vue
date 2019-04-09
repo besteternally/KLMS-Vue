@@ -24,7 +24,6 @@
         <Form
           ref='formValidateInsert'
           :model='formValidateInsert'
-          :rules='ruleValidateInsert'
           :label-width='80'
         >
           <FormItem label='Name' prop='name'>
@@ -123,20 +122,6 @@ export default {
       formValidateInsert: {
         name: '',
         desc: ''
-      },
-      ruleValidateInsert: {
-        name: [
-          { required: true, message: '知识点名称不能为空', trigger: 'blur' }
-        ],
-        desc: [
-          { required: true, message: '请描述知识点', trigger: 'blur' },
-          {
-            type: 'string',
-            min: 10,
-            message: 'Introduce no less than 10 words',
-            trigger: 'blur'
-          }
-        ]
       }
     }
   },
@@ -170,14 +155,15 @@ export default {
         )
         .then(
           res => {
-            this.$http.get('/api/node/knowledgeTree')
-              .then(res => {
-                this.data4 = res.data
-              })
-            this.$Message.success('添加成功！')
-          },
-          res => {
-            this.$Message.success('添加失败！')
+            if (res.data === -1) {
+              this.$Message.success('名称已存在，添加失败！')
+            } else if (res.data !== -1) {
+              this.$http.get('/api/node/knowledgeTree')
+                .then(res => {
+                  this.data4 = res.data
+                })
+              this.$Message.success('添加成功！')
+            }
           }
         )
     },
