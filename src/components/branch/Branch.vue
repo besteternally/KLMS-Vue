@@ -6,7 +6,7 @@
         type='text'
         v-model='searchNode'
         search
-        enter-button
+        enter-button= 'search'
         placeholder='Enter something...'
         @on-enter='search'
       />
