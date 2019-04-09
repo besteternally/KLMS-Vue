@@ -357,7 +357,7 @@ article {
   width: 55%;
   position: absolute;
   margin-left: 38%;
-  margin-top: 100px;
+  margin-top: 30px;
   float: left;
 }
 #treeClass {
