@@ -138,7 +138,6 @@ export default {
           emulateJSON: true
         })
         .then(res => {
-          // bus.$emit('searchDataTree', res)
           this.data4 = res.body
         })
     },

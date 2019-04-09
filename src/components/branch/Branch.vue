@@ -202,7 +202,6 @@ export default {
         const children = parent.data.children || parent.data
         const index = children.findIndex(d => d.node_id === data.node_id)
         children.splice(index, 1)
-        // bus.$emit('sendDeleteDesc', 'deleteDesc')
         // 删除后详情清零
         this.items = [
           { id: '编号', text: '' },
